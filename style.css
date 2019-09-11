@@ -1,0 +1,174 @@
+
+/* import google fonts at fonts.google.com ......why isn't this importing???*/
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
+body { margin: 3em; 
+    background-color: rgb(242, 242, 216);
+}
+h1, h2, h3, h4 { color: rgb(156, 72, 163); font-family: Open Sans;}
+a { 
+    text-decoration: none;
+}
+p { 
+    color: #333; 
+}
+
+
+
+
+/* 11 columns; 2 for sidebar 9 for cards && 6 rows */
+.cssgrid {
+  display: grid;
+  /* em means 3 times as big as the set size or default size of 16px */
+  grid-gap: 3em;
+  /* same as 1fr 1fr 1fr 1fr 1fr 1fr */
+  grid-template-rows: repeat(6, 1fr);
+  /* same as 1fr eleven times */
+  grid-template-columns: repeat(11, 1fr);
+}
+
+.item.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+
+/* Box shadow and hover for cards */
+.item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /* box shadow (horizontal offset +right/-left, verticle offeset +down/-up, spread value, color) */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+.item:hover {
+  -webkit-box-shadow: 3px 6px 23px 10px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 3px 6px 23px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 6px 23px 10px rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+}
+
+/* Hide box shadow and hover for sidebar */
+.item.one {
+  border-bottom: 0px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
+  grid-row: span 6;
+  grid-column: span 2;
+  color: white;
+}
+
+.item.one:hover {
+  border-bottom: 0px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Card Styling */
+.cards {
+  margin: 1.2rem;
+}
+
+.price {
+  color: rgb(52, 145, 142);
+  text-align: center;
+  /* em here means 1.25 times and 1.5 times the size of the set font size (default is 16px) */
+  font-size: 1.25em;
+  margin-top: 1.5em;
+}
+
+
+
+/* #line and #next (title and sub-title) remain even on small screen size due to the id taking priority */
+
+#line {
+  text-align: center;
+  margin-left: 0.25em;
+  font-weight: 600;
+  font-size: 3em;
+}
+
+#next {
+  text-align: center;
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+  margin-top: 2.5em;
+  margin-left: .5em;
+}
+
+#contact, #aboutus, #social {
+  top: 30%;
+  font-size: 18px;
+  text-align: center;
+}
+
+#phone, #insta, #info {
+  text-align: center;
+}
+
+hr { margin: 2em; }
+
+.mission {
+  margin: 1em;
+  font-size: 1.2em;
+}
+
+.shirt {
+  width: 100%;
+  height: 100%;
+}
+
+.stuff {
+  color: #333;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+
+/************** MEDIA *************/
+/* targets everything under 980px */
+@media (max-width: 980px) {
+  
+  /* 2 columns */
+  .cssgrid {
+    display: grid;
+    /* the repeat here is the same as 1fr 1fr so you will so only two columns on the smalles screen size*/
+    grid-template-columns: repeat(2, 1fr);
+/* (grid-gap normally contains <grid-row-gap> and <grid-column-gap>) there will be no gap between cards when screen is under 980px */
+    grid-gap: 0px;
+  }
+  
+  /* 2 columns */
+  .item.one {
+    height: 10em;
+    margin-top: -2em;
+    /* this z index is negative and under the rest */
+    z-index: -1;
+  }
+
+  /* 1 column */
+  .item.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten {
+    /* span over til' the next column line */
+    grid-column: span 1; 
+  }
+  
+ 
+  /* Hide box shadow & border, Hide sidebar contents, Hide hover */
+  
+  .item {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  #contact, #aboutus, #phone, #info, #insta, #social, hr {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+  }
+  
+  .item:hover {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
+  }
+}
+ 
+
